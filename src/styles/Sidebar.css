@@ -1,21 +1,22 @@
 /* Sidebar.css */
 .sidebar {
   width: 20%;
-  height: 250px;
-  background-color: #000;
+  height: 100vh;
+  /* background-color: #000; */
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 20px 0;
+  justify-content: start;
+  padding-top: 20px;
   position: absolute;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 .sidebar-header {
   font-size: 24px;
   font-weight: bold;
-  text-align: center;
+  padding-left: 20px;
+  /* text-align: center; */
   text-decoration: underline;
   color: #fff;
 }
@@ -24,25 +25,30 @@
   display: flex;
   padding-top: 20px;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   gap: 3px;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .menu_list {
   width: 100%;
   display: flex;
+  /* padding-left: 20px; */
   gap: 10px;
-  padding: 10px 0px;
+  padding: 10px 20px;
 }
 
 .menu_list .icon {
-  width: 40%;
-  display: flex;
+  /* width: 40%; */
+  /* display: flex;
   justify-content: flex-end;
-  padding-right: 10px;
-}
+  padding-right: 10px; */
+};
 .menu_list .text {
-  width: 60%;
-  padding-left: 0px;
+  /* width: 60%;
+  padding-left: 0px; */
+}
+
+.menu_list:hover{
+  background-color: rgb(18, 91, 87);
 }
