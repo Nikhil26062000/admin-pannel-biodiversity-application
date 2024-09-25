@@ -3,6 +3,8 @@
   width: 20%;
   height: 100vh;
   /* background-color: #000; */
+  background-color: rgb(18, 91, 87);
+
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -38,16 +40,7 @@
   padding: 10px 20px;
 }
 
-.menu_list .icon {
-  /* width: 40%; */
-  /* display: flex;
-  justify-content: flex-end;
-  padding-right: 10px; */
-};
-.menu_list .text {
-  /* width: 60%;
-  padding-left: 0px; */
-}
+
 
 .menu_list:hover{
   background-color: rgb(18, 91, 87);
