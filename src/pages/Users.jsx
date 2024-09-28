@@ -1,30 +1,81 @@
-import React from "react";
+// import React from "react";
+// import Sidebar from "../components/Sidebar";
+// import TableComponent from "../components/TableComponent";
+// import Header from "../components/Header";
+// import MobileUserCard from "../components/Mobile-User-Card";
+
+// const Users = () => {
+//   return (
+//     <>
+//       <main className="container_box max-lg:hidden">
+//         <section className="left_section">
+//           <Sidebar />
+//         </section>
+
+//         <section className="right_section  ">
+//           <TableComponent />
+//         </section>
+//       </main>
+
+//       {/* For mobile and tablet devices */}
+
+//       <section className="lg:hidden">
+//         <Header/>
+//         <MobileUserCard/>
+//       </section>
+//     </>
+//   );
+// };
+
+// export default Users;
+
+
+
+
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import TableComponent from "../components/TableComponent";
 import Header from "../components/Header";
 import MobileUserCard from "../components/Mobile-User-Card";
 
 const Users = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Function to check screen size
+  const checkScreenSize = () => {
+    setIsMobile(window.innerWidth < 1024); // 1024px is the threshold for mobile/tablet devices
+  };
+
+  useEffect(() => {
+    checkScreenSize(); // Check initial screen size
+    window.addEventListener("resize", checkScreenSize); // Add listener to check on window resize
+    return () => window.removeEventListener("resize", checkScreenSize); // Clean up listener
+  }, []);
+
   return (
     <>
-      <main className="container_box max-lg:hidden">
-        <section className="left_section">
-          <Sidebar />
-        </section>
+      {!isMobile && (
+        <main className="container_box max-lg:hidden">
+          <section className="left_section">
+            <Sidebar />
+          </section>
 
-        <section className="right_section  ">
-          <TableComponent />
-        </section>
-      </main>
+          <section className="right_section">
+            <TableComponent />
+          </section>
+        </main>
+      )}
 
       {/* For mobile and tablet devices */}
-
-      <section className="lg:hidden">
-        <Header/>
-        <MobileUserCard/>
-      </section>
+      {isMobile && (
+        <section>
+          <Header />
+          <MobileUserCard />
+        </section>
+      )}
     </>
   );
 };
 
 export default Users;
+

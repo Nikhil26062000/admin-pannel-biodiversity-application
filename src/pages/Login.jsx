@@ -8,15 +8,11 @@ import Header from "../components/Header";
 const Login = () => {
   return (
     <>
-      <main className="container_box max-lg:hidden">
+      <main className="flex justify-center max-lg:hidden">
         {/* --------------------- Sidebar section ---------------------------------- */}
-        <section className="left_section">
-          <Sidebar />
-        </section>
-        {/* ----------------------------------- Login form section -------------- */}
-        <section className="right_section">
-          <LoginForm />
-        </section>
+       
+        <LoginForm />
+
       </main>
 
       <section className="lg:hidden">
