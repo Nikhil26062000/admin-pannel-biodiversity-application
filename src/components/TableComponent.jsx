@@ -1,16 +1,13 @@
-
-
-
-
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DoneIcon from '@mui/icons-material/Done';
-import EditIcon from '@mui/icons-material/Edit';
-import ReactPaginate from 'react-paginate';
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DoneIcon from "@mui/icons-material/Done";
+import EditIcon from "@mui/icons-material/Edit";
+import ReactPaginate from "react-paginate";
+import { containerVariants2 } from "../constants";
 
 const TableComponent = () => {
-   const initialData = [
+  const initialData = [
     {
       id: 1,
       name: "John Doe",
@@ -366,12 +363,12 @@ const TableComponent = () => {
   const [data, setData] = useState(initialData);
   const [editId, setEditId] = useState(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    username: '',
-    role: '',
+    name: "",
+    email: "",
+    username: "",
+    role: "",
   });
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [showAll, setShowAll] = useState(false); // State to toggle between full and paginated view
   const itemsPerPage = 10;
@@ -398,7 +395,7 @@ const TableComponent = () => {
       )
     );
     setEditId(null);
-    setFormData({ name: '', email: '', username: '', role: '' });
+    setFormData({ name: "", email: "", username: "", role: "" });
   };
 
   const handleDelete = (id) => {
@@ -418,25 +415,23 @@ const TableComponent = () => {
 
   const filteredData = showAll
     ? data.filter((item) =>
-        [item.name, item.email, item.username, item.role]
-          .some((value) => value.toLowerCase().includes(searchTerm.toLowerCase()))
+        [item.name, item.email, item.username, item.role].some((value) =>
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+        )
       ) // Show all data if `showAll` is true
     : currentPageData.filter((item) =>
-        [item.name, item.email, item.username, item.role]
-          .some((value) => value.toLowerCase().includes(searchTerm.toLowerCase()))
+        [item.name, item.email, item.username, item.role].some((value) =>
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+        )
       );
 
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
-    visible: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.9 },
-  };
+ 
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className="transition-all duration-500 ease-in-out transform"
     >
       <h1 className="text-center text-3xl pt-5 font-bold">USERS LIST</h1>
@@ -452,7 +447,7 @@ const TableComponent = () => {
           onClick={handleToggle} // Toggle full view
           className="mt-4 py-1 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all duration-300"
         >
-          {showAll ? 'Show Paginated' : 'Show All'}
+          {showAll ? "Show Paginated" : "Show All"}
         </button>
       </section>
       <div className="mx-auto mt-8 w-full h-[65vh] overflow-y-scroll">
@@ -471,11 +466,11 @@ const TableComponent = () => {
             {filteredData.map((item) => (
               <motion.tr
                 key={item.id}
-                variants={containerVariants}
+                variants={containerVariants2}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="transition-all duration-300 transform hover:bg-gray-100"
               >
                 <td className="border border-gray-300 px-4 py-2">{item.id}</td>
@@ -569,15 +564,15 @@ const TableComponent = () => {
       </div>
       {!showAll && (
         <ReactPaginate
-          previousLabel={'<'}
-          nextLabel={'>'}
+          previousLabel={"<"}
+          nextLabel={">"}
           pageCount={pageCount}
           onPageChange={handlePageClick}
-          containerClassName={'flex justify-center space-x-4 my-4'}
-          activeClassName={'bg-blue-500 text-white px-2 py-1 rounded-full'}
-          previousLinkClassName={'px-2 py-1 bg-gray-200 rounded-full'}
-          nextLinkClassName={'px-2 py-1 bg-gray-200 rounded-full'}
-          disabledClassName={'text-gray-400'}
+          containerClassName={"flex justify-center space-x-4 my-4"}
+          activeClassName={"bg-blue-500 text-white px-2 py-1 rounded-full"}
+          previousLinkClassName={"px-2 py-1 bg-gray-200 rounded-full"}
+          nextLinkClassName={"px-2 py-1 bg-gray-200 rounded-full"}
+          disabledClassName={"text-gray-400"}
         />
       )}
     </motion.div>
