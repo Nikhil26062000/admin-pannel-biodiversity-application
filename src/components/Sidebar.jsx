@@ -50,19 +50,17 @@ import "../styles/Sidebar.css"; // Import the CSS file for styling
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { MyContext } from "../context/accountProvider";
+import { logout } from "../controllers/logout-controller";
+import { menuItemVariants, sidebarVariants } from "../constants";
 
 const Sidebar = () => {
-  // Animation Variants
-  const sidebarVariants = {
-    hidden: { x: '-100%', opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-    exit: { x: '-100%', opacity: 0 }
-  };
-
-  const menuItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+  const {setToken} = useContext(MyContext)
+  
+  const handleLogout = () => {
+    logout(setToken)
+  }
 
   return (
     <motion.div 
@@ -92,7 +90,20 @@ const Sidebar = () => {
           <span className="icon">
             <PeopleAltIcon />
           </span>
-          <Link to="/users"><span className="text">Manage Users</span></Link>
+          <Link to="/users"><span className="text">All Users</span></Link>
+        </motion.div>
+
+        <motion.div 
+          className="menu_list"
+          variants={menuItemVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          <span className="icon">
+            <PeopleAltIcon />
+          </span>
+          <Link to="/manage-users"><span className="text">Manage Users</span></Link>
         </motion.div>
 
         <motion.div 
@@ -105,7 +116,7 @@ const Sidebar = () => {
           <span className="icon">
             <LogoutIcon />
           </span>
-          <Link to="/"><span className="text">Logout</span></Link>
+          <Link to="/"><span className="text" onClick={handleLogout}>Logout</span></Link>
         </motion.div>
       </nav>
     </motion.div>

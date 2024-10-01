@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import login_controler from "../controllers/login-controller";
 import { buttonVariants, containerVariants, inputVariants } from "../constants";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { MyContext } from "../context/accountProvider";
+
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
+  const {setToken} = useContext(MyContext)
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    login_controler(email, password, setEmail, setPassword);
+    login_controler(email,password,setEmail,setPassword,navigate,setToken)
   };
 
   return (

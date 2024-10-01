@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     // Skip adding token for login request
-    if (!config.url.includes("/login")) {
+    if (!config.url.includes("/admin/acc/login")) {
       const token = localStorage.getItem("token"); // Retrieve token from storage
       if (token) {
         config.headers["token"] = `${token}`; // Set the token header
@@ -41,7 +41,7 @@ axiosInstance.interceptors.response.use(
       // localStorage.removeItem('role');
 
       // Redirect to login page using window.location to bypass React routing
-      window.location.href = "/login";
+      // window.location.href = "/login";
     }
 
     // Reject the promise with the error to handle it in your components
