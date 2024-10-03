@@ -1,0 +1,28 @@
+{
+    "privileges": [
+      {
+        "id": 1,
+        "name": "edit",
+        "isChecked": false
+      },
+      {
+        "id": 2,
+        "name": "view",
+        "isChecked": false
+      },
+      {
+        "id": 3,
+        "name": "update",
+        "isChecked": false
+      },
+      {
+        "id": 4,
+        "name": "delete",
+        "isChecked": false
+      }, {
+        "id": 5,
+        "name": "approve",
+        "isChecked": false
+      }
+    ]
+  }

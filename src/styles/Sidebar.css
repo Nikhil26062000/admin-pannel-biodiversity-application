@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: start;
   padding-top: 20px;
-  position: absolute;
+  position: fixed;
   /* border-radius: 20px; */
 }
 

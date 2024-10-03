@@ -1,33 +1,4 @@
-// import React from "react";
-// import Sidebar from "../components/Sidebar";
-// import TableComponent from "../components/TableComponent";
-// import Header from "../components/Header";
-// import MobileUserCard from "../components/Mobile-User-Card";
 
-// const Users = () => {
-//   return (
-//     <>
-//       <main className="container_box max-lg:hidden">
-//         <section className="left_section">
-//           <Sidebar />
-//         </section>
-
-//         <section className="right_section  ">
-//           <TableComponent />
-//         </section>
-//       </main>
-
-//       {/* For mobile and tablet devices */}
-
-//       <section className="lg:hidden">
-//         <Header/>
-//         <MobileUserCard/>
-//       </section>
-//     </>
-//   );
-// };
-
-// export default Users;
 
 
 
@@ -55,12 +26,12 @@ const Users = () => {
   return (
     <>
       {!isMobile && (
-        <main className="container_box max-lg:hidden">
-          <section className="left_section">
+        <main className="flex overflow-y-hidden max-lg:hidden">
+          <section className="w-[20%]">
             <Sidebar />
           </section>
 
-          <section className="right_section">
+          <section className="w-[80%] flex justify-center ">
             <TableComponent />
           </section>
         </main>
