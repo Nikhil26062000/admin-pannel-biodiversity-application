@@ -169,13 +169,19 @@ const RoleSelection = () => {
   );
 
   return (
-    <div className="w-[80%]  h-screen absolute  ">
-    <h2 className="text-center text-3xl font-bold pt-20">Select Roles and Privileges</h2>
-      <div className="w-full px-[20px]">
-        <div className="w-[100%] mx-auto mt-10 p-8 bg-gray-100 rounded-lg shadow-lg">
+    <div className="w-[100%]  h-screen absolute lg:w-[80%]  ">
+    <h2 className="text-center text-lg font-bold pt-10 lg:text-2xl lg:pt-20">Select Roles and Privileges</h2>
+      <div className="w-full px-[5px] lg:px-[20px]">
+        <div className="w-[100%] mx-auto mt-10 p-4 bg-gray-100 rounded-lg shadow-lg">
           {loading ? (
             <div>
-             Loading...
+            <Shimmer width="w-40" height="h-4" marginBottom="mb-4" />
+              <Shimmer width="w-full" height="h-6" marginBottom="mb-4" />
+              <Shimmer width="w-32" height="h-4" marginBottom="mb-4" />
+              <Shimmer width="w-full" height="h-6" marginBottom="mb-4" />
+              <Shimmer width="w-40" height="h-4" marginBottom="mb-4" />
+              <Shimmer width="w-full" height="h-6" marginBottom="mb-4" />
+              <Shimmer height="h-12" width="w-full" marginBottom="mb-0" />
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
@@ -189,7 +195,7 @@ const RoleSelection = () => {
                     required
                     value={selectedUser} // Bind to selectedUser's ID
                     onChange={handleUserChange}
-                    className="form-select block w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                    className="form-select text-xs block w-full mt-1 bg-white border border-gray-300 rounded-xs shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                   >
                     <option value="" disabled>
                       Select a user
@@ -223,7 +229,7 @@ const RoleSelection = () => {
                         onChange={() => handleRoleChange(role.role_id)}
                         className="text-blue-600 focus:ring-blue-500 focus:ring-2"
                       />
-                      <span className="capitalize">{role.role_name}</span>
+                      <span className="capitalize text-xs">{role.role_name}</span>
                     </label>
                   ))}
                 </div>
@@ -238,7 +244,7 @@ const RoleSelection = () => {
                   {privileges.map((privilege) => (
                     <label
                       key={privilege.id}
-                      className="flex items-center space-x-2 text-xs"
+                      className="flex items-center space-x-2 "
                     >
                       <input
                         type="checkbox"
@@ -248,19 +254,22 @@ const RoleSelection = () => {
                         onChange={() => handlePrivilegeChange(privilege.id)}
                         className="text-blue-600 focus:ring-blue-500 focus:ring-2"
                       />
-                      <span className="capitalize">{privilege.name}</span>
+                      <span className="capitalize text-xs">{privilege.name}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
               {/* Submit Button */}
+              <div className="w-full flex justify-center">
               <button
                 type="submit"
-                className="w-full bg-[#125B57] text-white py-3 px-6 rounded-lg focus:ring-4 focus:ring-blue-300 transition duration-200 ease-in-out"
+                className=" bg-[#125B57] text-white py-3 px-6 rounded-lg focus:ring-4 focus:ring-blue-300 transition duration-200 ease-in-out"
               >
                 Submit
               </button>
+              </div>
+             
             </form>
           )}
         </div>
