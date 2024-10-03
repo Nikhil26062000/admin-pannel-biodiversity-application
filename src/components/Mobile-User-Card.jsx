@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { fetch_user_list } from "../controllers/crud-operations-controller";
+
 import { containerVariants2 } from "../constants";
+import { fetch_user_list } from "../controllers/crud-operations-controller";
 
 // Shimmer Component
 const Shimmer = () => {

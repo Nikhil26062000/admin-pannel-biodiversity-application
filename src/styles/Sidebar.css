@@ -40,8 +40,6 @@
   padding: 10px 20px;
 }
 
-
-
-.menu_list:hover{
+.menu_list:hover {
   background-color: rgb(18, 91, 87);
 }

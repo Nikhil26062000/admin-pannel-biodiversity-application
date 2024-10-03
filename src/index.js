@@ -5,18 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { MyProvider } from "./context/accountProvider";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <MyProvider>
+    <Toaster />
     <App />
     </MyProvider>
 
      
     </BrowserRouter>
-    ,
+  
   </React.StrictMode>
 );
 
