@@ -16,7 +16,7 @@ const Login = () => {
       </main>
 
       <section className="lg:hidden">
-        <Header />
+        {/* <Header /> */}
         <LoginForm />
       </section>
     </>
