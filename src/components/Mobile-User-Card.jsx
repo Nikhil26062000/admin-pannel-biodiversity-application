@@ -72,9 +72,9 @@ const MobileUserCard = () => {
                 .fill(0)
                 .map((_, index) => <Shimmer key={index} />)
             : // Show actual data once loaded
-              filteredData?.map((item) => (
+              filteredData?.map((item,index) => (
                 <motion.div
-                  key={item.id}
+                  key={index}
                   variants={containerVariants2}
                   initial="hidden"
                   animate="visible"

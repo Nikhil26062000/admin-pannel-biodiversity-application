@@ -14,7 +14,7 @@ const Manage_User = () => {
           <RoleSelection />
         </div>
       </div>
-      <section>
+      <section className="lg:hidden">
       <Header />
       <div className="w-full flex flex-col items-center relative lg:hidden">
        

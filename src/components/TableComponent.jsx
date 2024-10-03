@@ -80,9 +80,9 @@ const TableComponent = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredData?.map((item) => (
+            {filteredData?.map((item,index) => (
               <motion.tr
-                key={item.id}
+                key={index}
                 variants={containerVariants2}
                 initial="hidden"
                 animate="visible"
