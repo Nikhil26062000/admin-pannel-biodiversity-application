@@ -4,13 +4,14 @@ import ReactPaginate from "react-paginate";
 import { containerVariants2 } from "../constants";
 import { fetch_user_list } from "../controllers/crud-operations-controller";
 
+
 const TableComponent = () => {
   const [data, setData] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [showAll, setShowAll] = useState(true); // State to toggle between full and paginated view
   const itemsPerPage = 10;
-  const [role, setRole] = useState();
+  
 
   // Calculate pagination
   const pageCount = Math.ceil(data?.length / itemsPerPage);
@@ -32,8 +33,7 @@ const TableComponent = () => {
     setCurrentPage(0);
   };
 
-  const filteredData = showAll
-    ? data?.filter((item) =>
+  const filteredData = showAll ? data?.filter((item) =>
         [item.username,item.userid].some((value) =>
           value.toLowerCase().includes(searchTerm.toLowerCase())
         )

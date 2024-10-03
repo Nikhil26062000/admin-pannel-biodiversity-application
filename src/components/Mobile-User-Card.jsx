@@ -1,9 +1,8 @@
-
-
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { fetch_user_list } from "../controllers/crud-operations-controller";
+
 import { containerVariants2 } from "../constants";
+import { fetch_user_list } from "../controllers/crud-operations-controller";
 
 // Shimmer Component
 const Shimmer = () => {
@@ -72,7 +71,7 @@ const MobileUserCard = () => {
                 .fill(0)
                 .map((_, index) => <Shimmer key={index} />)
             : // Show actual data once loaded
-              filteredData?.map((item,index) => (
+              filteredData?.map((item, index) => (
                 <motion.div
                   key={index}
                   variants={containerVariants2}
@@ -80,30 +79,33 @@ const MobileUserCard = () => {
                   animate="visible"
                   exit="exit"
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="bg-white shadow-md rounded-md p-4 w-full md:w-1/3"
+                  className="bg-white shadow-md rounded-md p-4 w-[96%] md:w-1/3"
                 >
-                  <div className="mb-2">
-                    <span className="font-bold">PID:</span> {item.pid}
+                  {/* Card Header */}
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="font-bold text-left"> {item.pid}</div>
+                    <div className="font-bold text-right"> {item.username}</div>
                   </div>
-                  <div className="mb-2">
-                    <span className="font-bold">Userid:</span> {item.userid}
-                  </div>
-                  <div className="mb-2">
-                    <span className="font-bold">Username:</span> {item.username}
-                  </div>
-                  <div className="mb-2">
-                    <span className="font-bold">Role:</span>
-                    {item.role === "1"
-                      ? "f4f"
-                      : item.role === "2"
-                      ? "admin"
-                      : item.role === "3"
-                      ? "user"
-                      : "----"}
-                  </div>
-                  <div className="mb-2">
-                    <span className="font-bold">Privileges:</span>
-                    {item.privileges.join(" - ")}
+
+                  {/* Card Body */}
+                  <div className="space-y-2 text-sm">
+                    <div>
+                      <span className="text-xs">Userid : </span> {item.userid}
+                    </div>
+                    <div>
+                      <span className="text-xs">Role : </span>
+                      {item.role === "1"
+                        ? "f4f"
+                        : item.role === "2"
+                        ? "admin"
+                        : item.role === "3"
+                        ? "user"
+                        : "----"}
+                    </div>
+                    <div>
+                      <span className="text-xs">Privileges : </span>{" "}
+                      {item.privileges.join(" - ")}
+                    </div>
                   </div>
                 </motion.div>
               ))}
