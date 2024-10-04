@@ -3,19 +3,18 @@ import "../styles/Login.css";
 
 import LoginForm from "../components/Login-Form";
 
-
 const Login = () => {
   return (
     <>
-      <main className="flex justify-center max-lg:hidden">
-        {/* --------------------- Sidebar section ---------------------------------- */}
-       
-        <LoginForm />
+      {/* -------- This main section is for screen size greater than lg  ------------*/}
 
+      <main className="flex justify-center max-lg:hidden">
+        <LoginForm />
       </main>
 
+      {/* ---------------- This section is for screen size smaller than lg ------------- */}
+
       <section className="lg:hidden">
-        {/* <Header /> */}
         <LoginForm />
       </section>
     </>
