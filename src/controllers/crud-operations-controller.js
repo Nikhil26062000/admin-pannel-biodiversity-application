@@ -20,6 +20,15 @@ export const fetch_roles_from_json = async (setRoles) => {
   setRoles(data.roles);
 };
 
+export const fetch_rolebase_from_json = async (setRoleBase) => {
+  const res = await fetch(`${process.env.PUBLIC_URL}/RoleBase.json`);
+  const data = await res.json();
+  console.log(data.rolebase);
+  console.log(data.rolebase[2].role_name);
+  
+  setRoleBase(data.rolebase);
+};
+
 export const fetch_privileges_from_json = async (setPrivileges) => {
   const res = await fetch(`${process.env.PUBLIC_URL}/privileges.json`);
   const data = await res.json();
