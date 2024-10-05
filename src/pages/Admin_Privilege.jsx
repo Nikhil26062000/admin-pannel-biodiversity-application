@@ -78,7 +78,7 @@ const RoleSelection = () => {
   );
 
   return (
-    <div className="w-[100%]  h-screen absolute lg:w-[80%]  ">
+    <div className="w-[100%]   absolute lg:w-[80%]  ">
       <h2 className="text-center text-lg font-bold pt-10 lg:text-2xl lg:pt-20">
         Select Roles and Privileges
       </h2>
