@@ -12,7 +12,7 @@ import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { containerVariants2 } from "../constants";
-import { fetch_user_list } from "../controllers/crud-operations-controller";
+import { fetch_rolebase_from_json, fetch_user_list } from "../controllers/crud-operations-controller";
 import { grey, blue } from "@mui/material/colors"; // Ensure you import grey and blue
 
 const TableComponent = () => {
@@ -20,10 +20,12 @@ const TableComponent = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [roleBase,setRoleBase] = useState();
 
   // Fetch user data
   useEffect(() => {
     fetch_user_list(setData);
+    fetch_rolebase_from_json(setRoleBase)
   }, []);
 
   // Handle page change
@@ -106,11 +108,11 @@ const TableComponent = () => {
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     {item.role === "1"
-                      ? "f4f"
+                      ? roleBase[0].role_name
                       : item.role === "2"
-                      ? "admin"
+                      ? roleBase[1].role_name
                       : item.role === "3"
-                      ? "user"
+                      ? roleBase[2].role_name
                       : "----"}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
