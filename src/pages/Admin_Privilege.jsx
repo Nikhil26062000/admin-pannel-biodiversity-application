@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { adminPrivelegs, set_Privileges } from "../services/Api-Services";
+import { adminPrivelegs, set_Privileges, users_list } from "../services/Api-Services";
 import { toast } from "react-hot-toast";
 import {
   fetch_privileges_from_json,
@@ -11,28 +11,28 @@ import {
 } from "../controllers/crud-operations-controller";
 
 const RoleSelection = () => {
-  const [roles, setRoles] = useState([]);
-  const [privileges, setPrivileges] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [roles, setRoles] = useState([]);  // will store the roles fetching from public folder
+  const [privileges, setPrivileges] = useState([]);  // will store the privileges fetching from public folder
+  const [users, setUsers] = useState([]);  // will store the users fetching from api
 
   const [selectedUser, setSelectedUser] = useState(""); // Use user ID here
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);  // used to show shimmer
 
   const [filterUser, setFilterUser] = useState([]);
 
-  let obj = {};
+  let obj = {};  
 
   const fetchRoles = async () => {
-    await fetch_roles_from_json(setRoles);
+    await fetch_roles_from_json(setRoles);  // calling controllers to fetch roles
   };
 
   const fetchPrivileges = async () => {
-    fetch_privileges_from_json(setPrivileges);
+    fetch_privileges_from_json(setPrivileges);  // calling controllers to fetch privileges
   };
 
   const fetchUsers = async () => {
-    const res = await adminPrivelegs();
-    setUsers(res);
+    const res = await users_list();  // calling api from api service to fetch users
+    setUsers(res.data);
   };
   useEffect(() => {
     Promise.all([fetchRoles(), fetchPrivileges(), fetchUsers()]).then(() =>
@@ -41,14 +41,15 @@ const RoleSelection = () => {
   }, []);
 
   const handleRoleChange = (id) => {
-    handle_role_change(id, roles, setRoles);
+    handle_role_change(id, roles, setRoles);  // contoller handle the role change when user select roles to store in db
   };
 
   const handlePrivilegeChange = (id) => {
-    handle_privileges_change(id, privileges, setPrivileges);
+    handle_privileges_change(id, privileges, setPrivileges);   // contoller handle the privilege change when user select privileges to store in db
   };
 
   const handleUserChange = (e) => {
+    //controller which used to handle user change from dropdown
     handle_user_change(
       e,
       roles,
@@ -61,11 +62,11 @@ const RoleSelection = () => {
   };
 
   const handleSubmit = async (e) => {
-    handle_roles_privilege_form_submit(e, roles, privileges, selectedUser);
-    fetchUsers();
+    handle_roles_privilege_form_submit(e, roles, privileges, selectedUser);  // controller for submit the final form 
+    fetchUsers();  // fetching the latest data after uploading the form 
   };
 
-  // Shimmer Effect
+  // Shimmer Effect to show when data is not present
   const Shimmer = ({
     height = "h-6",
     width = "w-full",

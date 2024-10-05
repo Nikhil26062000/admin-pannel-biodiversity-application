@@ -6,6 +6,7 @@ import Header from "../components/Header";
 const Manage_User = () => {
   return (
     <>
+    {/* for screen larger than 1024px */}
       <div className="flex max-lg:hidden">
         <div className="w-[20%] ">
           <Sidebar />
@@ -14,12 +15,13 @@ const Manage_User = () => {
           <RoleSelection />
         </div>
       </div>
+
+      {/* for mobiles and tablets */}
       <section className="lg:hidden">
-      <Header />
-      <div className="w-full flex flex-col items-center relative lg:hidden">
-       
-        <RoleSelection />
-      </div>
+        <Header />
+        <div className="w-full flex flex-col items-center relative lg:hidden">
+          <RoleSelection />
+        </div>
       </section>
     </>
   );

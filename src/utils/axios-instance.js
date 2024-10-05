@@ -12,7 +12,7 @@ axiosInstance.interceptors.request.use(
     if (!config.url.includes("/admin/acc/login")) {
       const token = localStorage.getItem("token"); // Retrieve token from storage
       if (token) {
-        config.headers["token"] = `${token}`; // Set the token header
+        config.headers["Token"] = `${token}`; // Set the token header
       }
     }
     return config;

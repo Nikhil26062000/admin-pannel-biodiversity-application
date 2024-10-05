@@ -34,6 +34,7 @@ const MobileUserCard = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
+// fetching user data from backend to display in card 
   useEffect(() => {
     fetch_user_list((response) => {
       setData(response);
@@ -41,6 +42,7 @@ const MobileUserCard = () => {
     });
   }, []);
 
+// filtering data at the time when user is searching 
   const filteredData = data?.filter((item) =>
     [item.username, item.userid].some((value) =>
       value.toLowerCase().includes(searchTerm.toLowerCase())

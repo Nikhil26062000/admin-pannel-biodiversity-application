@@ -25,6 +25,7 @@ const Users = () => {
 
   return (
     <>
+    {/* If the screen size is greater than 1024 this section will be visible */}
       {!isMobile && (
         <main className="flex overflow-y-hidden max-lg:hidden">
           <section className="w-[20%]">
@@ -37,7 +38,7 @@ const Users = () => {
         </main>
       )}
 
-      {/* For mobile and tablet devices */}
+      {/* For mobile and tablet devices when screen size is smaller than 1024 */}
       {isMobile && (
         <section>
           <Header />

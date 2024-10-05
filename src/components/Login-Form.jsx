@@ -16,7 +16,7 @@ const LoginForm = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    login_controler(email,password,setEmail,setPassword,navigate,setToken)
+    login_controler(email,password,setEmail,setPassword,navigate,setToken)  
   };
 
   return (
